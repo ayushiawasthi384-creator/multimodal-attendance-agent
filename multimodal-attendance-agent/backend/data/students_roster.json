@@ -1,0 +1,74 @@
+[
+  {
+    "id": "STU-001",
+    "name": "Aarav Sharma",
+    "roll_no": "CS2026-042",
+    "email": "aarav.sharma@institution.edu",
+    "seat": "Row 1, Seat 3 (Front)",
+    "baseline_face_id": "face_feat_vec_001",
+    "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150"
+  },
+  {
+    "id": "STU-002",
+    "name": "Beatriz Silva",
+    "roll_no": "CS2026-015",
+    "email": "beatriz.silva@institution.edu",
+    "seat": "Row 2, Seat 1 (Middle)",
+    "baseline_face_id": "face_feat_vec_002",
+    "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150"
+  },
+  {
+    "id": "STU-003",
+    "name": "Chen Wei",
+    "roll_no": "CS2026-089",
+    "email": "chen.wei@institution.edu",
+    "seat": "Row 1, Seat 2 (Front)",
+    "baseline_face_id": "face_feat_vec_003",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150"
+  },
+  {
+    "id": "STU-004",
+    "name": "Daria Petrova",
+    "roll_no": "CS2026-031",
+    "email": "daria.petrova@institution.edu",
+    "seat": "Row 3, Seat 4 (Back)",
+    "baseline_face_id": "face_feat_vec_004",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
+  },
+  {
+    "id": "STU-005",
+    "name": "Ethan Davis",
+    "roll_no": "CS2026-064",
+    "email": "ethan.davis@institution.edu",
+    "seat": "Row 2, Seat 4 (Middle)",
+    "baseline_face_id": "face_feat_vec_005",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150"
+  },
+  {
+    "id": "STU-006",
+    "name": "Fatima Al-Mansoor",
+    "roll_no": "CS2026-077",
+    "email": "fatima.almansoor@institution.edu",
+    "seat": "Row 1, Seat 4 (Front)",
+    "baseline_face_id": "face_feat_vec_006",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
+  },
+  {
+    "id": "STU-007",
+    "name": "Gabriel Santos",
+    "roll_no": "CS2026-022",
+    "email": "gabriel.santos@institution.edu",
+    "seat": "Row 3, Seat 2 (Back)",
+    "baseline_face_id": "face_feat_vec_007",
+    "avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150"
+  },
+  {
+    "id": "STU-008",
+    "name": "Hana Tanaka",
+    "roll_no": "CS2026-053",
+    "email": "hana.tanaka@institution.edu",
+    "seat": "Row 2, Seat 2 (Middle)",
+    "baseline_face_id": "face_feat_vec_008",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150"
+  }
+]

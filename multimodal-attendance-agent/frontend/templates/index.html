@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multimodal Attendance & Engagement Agent | Classroom Intelligence</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <!-- Chart.js for Telemetry Charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="glass-header">
+    <div class="logo-area">
+      <div class="logo-icon">🧠</div>
+      <div class="logo-text">
+        <h1>Multimodal Attendance & Engagement Agent</h1>
+        <p>AI-Powered Privacy-Preserving Classroom Intelligence System</p>
+      </div>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-green">
+        <span class="pulse-dot"></span> Offline-First Ready
+      </span>
+      <span class="badge badge-purple">
+        <span>⚡</span> Gemini 2.0 Flash Copilot
+      </span>
+      <span class="badge badge-amber" id="cam-status-text">
+        CCTV SIMULATOR ACTIVE
+      </span>
+    </div>
+  </header>
+
+  <!-- Container -->
+  <main class="app-container">
+
+    <!-- Scenario Switcher -->
+    <div class="scenario-nav">
+      <button class="scenario-btn active" data-scenario="scenario_1">
+        <span>📋</span> Scenario 1: Sustained Attendance
+      </button>
+      <button class="scenario-btn" data-scenario="scenario_2">
+        <span>📈</span> Scenario 2: Dynamics & Fusion
+      </button>
+      <button class="scenario-btn" data-scenario="scenario_3">
+        <span>💡</span> Scenario 3: AI Teaching Copilot
+      </button>
+    </div>
+
+    <!-- Key Metrics Grid -->
+    <section class="metrics-grid">
+      <div class="glass metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Composite Engagement</span>
+          <span class="metric-icon">🎯</span>
+        </div>
+        <div class="metric-value" id="val-engagement">76.4<span style="font-size:1rem; color:var(--text-muted);">%</span></div>
+        <div class="metric-sub">Multimodal Vision + Audio Fusion</div>
+      </div>
+
+      <div class="glass metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Sustained Attendance</span>
+          <span class="metric-icon">👥</span>
+        </div>
+        <div class="metric-value" id="val-attendance">86<span style="font-size:1rem; color:var(--text-muted);">%</span></div>
+        <div class="metric-sub" id="val-enrolled-count">6 / 7 Verified Attendees</div>
+      </div>
+
+      <div class="glass metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Vision Attention Score</span>
+          <span class="metric-icon">👁️</span>
+        </div>
+        <div class="metric-value" id="val-vision-score">81.4<span style="font-size:1rem; color:var(--text-muted);">%</span></div>
+        <div class="metric-sub">Head Pose Yaw/Pitch Alignment</div>
+      </div>
+
+      <div class="glass metric-card">
+        <div class="metric-header">
+          <span class="metric-title">Audio Interaction</span>
+          <span class="metric-icon">🎙️</span>
+        </div>
+        <div class="metric-value" style="font-size:1.5rem;" id="val-audio-interaction">Balanced Q&A</div>
+        <div class="metric-sub">Vocal Turn-Taking Dynamics</div>
+      </div>
+    </section>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs-header">
+      <button class="tab-btn active" data-tab="tab-monitor">🖥️ Live Classroom Studio</button>
+      <button class="tab-btn" data-tab="tab-attendance">📋 Scenario 1: Attendance Logs</button>
+      <button class="tab-btn" data-tab="tab-dynamics">📊 Scenario 2: Session Dynamics</button>
+      <button class="tab-btn" data-tab="tab-suggestions">💡 Scenario 3: AI Teaching Copilot</button>
+      <button class="tab-btn" data-tab="tab-code">💻 Sandboxed Code Executor</button>
+    </div>
+
+    <!-- TAB 1: Live Classroom Studio -->
+    <section id="tab-monitor" class="tab-content active">
+      <div class="monitor-grid">
+        <!-- Video Feed & Facial Bounding Boxes -->
+        <div class="glass video-container">
+          <video id="webcam-feed" playsinline autoplay muted></video>
+          <canvas id="overlay-canvas"></canvas>
+          <div class="video-controls">
+            <div style="font-size:0.8rem; color:#cbd5e1; display:flex; align-items:center; gap:0.5rem;">
+              <span class="pulse-dot" style="background:#10B981;"></span>
+              <span>Vision Edge-Privacy: Feature extraction mode (No raw footage saved)</span>
+            </div>
+            <button class="btn btn-secondary" id="toggle-camera-btn">
+              <span>📹</span> Start Live Webcam
+            </button>
+          </div>
+        </div>
+
+        <!-- Audio Telemetry & Copilot Live Feed -->
+        <div class="glass audio-visualizer-box">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h3 style="font-size:1rem; font-weight:700;">Acoustic Activity & VAD</h3>
+            <span class="badge badge-green">VAD Active</span>
+          </div>
+
+          <!-- Real-Time Audio Frequency Canvas -->
+          <div style="height:100px; background:#070b14; border-radius:8px; overflow:hidden;">
+            <canvas id="audio-spectrum-canvas" style="width:100%; height:100%;"></canvas>
+          </div>
+
+          <div class="audio-meters">
+            <div>
+              <div class="meter-label">
+                <span>Classroom Noise Floor</span>
+                <span id="label-noise-db">-24 dBFS</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width:68%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="meter-label">
+                <span>Speech Activity Ratio</span>
+                <span id="label-speech-ratio">74%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width:74%; background:linear-gradient(90deg, #8b5cf6, #3b82f6);"></div>
+              </div>
+            </div>
+          </div>
+
+          <hr style="border-color:var(--border-color);" />
+
+          <div>
+            <h4 style="font-size:0.85rem; font-weight:700; color:#cbd5e1; margin-bottom:0.5rem;">
+              🤖 Real-Time Pedagogical Copilot
+            </h4>
+            <div class="glass" style="padding:0.75rem; font-size:0.8rem; background:rgba(0,0,0,0.3); border-left:3px solid #3b82f6;">
+              <div style="font-weight:600; color:#93c5fd;">Status: Optimal Absorption</div>
+              <div style="color:#94a3b8; margin-top:0.25rem;">
+                Visual attention is steady at 82%. Pacing is 145 wpm. Keep lecture rolling.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: Scenario 1 Attendance -->
+    <section id="tab-attendance" class="tab-content">
+      <div class="glass" style="padding:1.5rem; margin-bottom:1.5rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+          <div>
+            <h2 style="font-size:1.25rem; font-weight:700;" id="sc1-session-title">CS401: Advanced AI & Robotics</h2>
+            <p style="font-size:0.8rem; color:var(--text-muted);">
+              Instructor: <strong id="sc1-instructor" style="color:#fff;">Dr. Elena Rostova</strong> • Sustained Threshold: <strong id="sc1-threshold" style="color:#34d399;">30s</strong>
+            </p>
+          </div>
+          <button class="btn btn-success" id="btn-export-csv">
+            <span>📥</span> Export Official CSV Roster
+          </button>
+        </div>
+
+        <div style="background:rgba(59, 130, 246, 0.08); border:1px solid rgba(59, 130, 246, 0.2); border-radius:8px; padding:0.75rem 1rem; margin-bottom:1rem; font-size:0.825rem; color:#93c5fd;">
+          💡 <strong>Sustained Presence State Machine:</strong> Attendance is marked based on continuous biometric presence rather than single-frame detection. Notice student <em>Ethan Davis</em> was detected for 18 seconds (transient walk-by) and automatically filtered out to prevent false positives.
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Student / Participant</th>
+                <th>Attendance Status</th>
+                <th>Sustained Duration</th>
+                <th>First Detected</th>
+                <th>Last Detected</th>
+                <th>Verification Intelligence Note</th>
+              </tr>
+            </thead>
+            <tbody id="attendance-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: Scenario 2 Dynamics -->
+    <section id="tab-dynamics" class="tab-content">
+      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+        <!-- Line Chart -->
+        <div class="glass" style="padding:1.5rem;">
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:1rem;">
+            Multimodal Engagement Timeline (45-Minute Lecture)
+          </h3>
+          <div style="height:320px;">
+            <canvas id="dynamics-line-chart"></canvas>
+          </div>
+        </div>
+
+        <!-- Doughnut Chart -->
+        <div class="glass" style="padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between;">
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:0.5rem;">
+            Classroom Vocal Distribution
+          </h3>
+          <div style="height:220px;">
+            <canvas id="vocal-doughnut-chart"></canvas>
+          </div>
+          <div style="font-size:0.75rem; color:var(--text-muted); text-align:center; margin-top:0.5rem;">
+            Active Q&A and student engagement bursts accounted for 28% of vocal floor time.
+          </div>
+        </div>
+      </div>
+
+      <!-- Spatial Seating Heatmap -->
+      <div class="glass" style="padding:1.5rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <h3 style="font-size:1rem; font-weight:700;">Classroom Spatial Seating Attention Matrix</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted);">Row-by-row attention distribution and gradient analysis</p>
+          </div>
+          <span class="badge badge-amber">⚠️ 26.4% Disparity Detected</span>
+        </div>
+
+        <div class="heatmap-grid">
+          <div class="heatmap-card" style="border-top:3px solid #10b981;">
+            <div style="font-size:0.75rem; color:var(--text-muted);">Row 1 (Front)</div>
+            <div style="font-size:1.8rem; font-weight:800; color:#10b981;">88.2%</div>
+            <div style="font-size:0.75rem; color:#94a3b8;">High visual eye contact & active note-taking</div>
+          </div>
+
+          <div class="heatmap-card" style="border-top:3px solid #3b82f6;">
+            <div style="font-size:0.75rem; color:var(--text-muted);">Row 2 (Middle)</div>
+            <div style="font-size:1.8rem; font-weight:800; color:#3b82f6;">75.4%</div>
+            <div style="font-size:0.75rem; color:#94a3b8;">Steady attention; moderate phone glance rate</div>
+          </div>
+
+          <div class="heatmap-card" style="border-top:3px solid #f59e0b;">
+            <div style="font-size:0.75rem; color:var(--text-muted);">Row 3 (Back)</div>
+            <div style="font-size:1.8rem; font-weight:800; color:#f59e0b;">61.8%</div>
+            <div style="font-size:0.75rem; color:#94a3b8;">Higher head drooping & peripheral drift</div>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem; padding:0.75rem; background:rgba(245, 158, 11, 0.08); border-left:3px solid #f59e0b; border-radius:6px; font-size:0.825rem; color:#fde68a;">
+          <strong>Pedagogical Spatial Advice:</strong> There is a significant front-to-back attention gradient. Instructor should step out from the lectern and walk the center aisle to rebalance attention.
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: Scenario 3 AI Teaching Copilot -->
+    <section id="tab-suggestions" class="tab-content">
+      <div style="display:grid; grid-template-columns: 1.4fr 1fr; gap:1.5rem;">
+        <!-- Logged Interventions Feed -->
+        <div>
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:1rem;">
+            Context-Aware AI Teaching Interventions Feed
+          </h3>
+          <div id="interventions-list">
+            <!-- Dynamically populated from Scenario 3 -->
+          </div>
+        </div>
+
+        <!-- Live Telemetry AI Simulator -->
+        <div class="glass" style="padding:1.5rem;">
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:0.5rem;">
+            AI Suggestion Generator
+          </h3>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">
+            Simulate classroom conditions and trigger Gemini 2.0 Flash pedagogical recommendations.
+          </p>
+
+          <div style="display:flex; flex-direction:column; gap:1rem;">
+            <div>
+              <label style="font-size:0.8rem; color:#cbd5e1; display:flex; justify-content:space-between;">
+                <span>Engagement Level:</span>
+                <span id="slider-eng-val" style="font-weight:700; color:#38bdf8;">52%</span>
+              </label>
+              <input type="range" id="slider-engagement" min="30" max="95" value="52" style="width:100%;" oninput="document.getElementById('slider-eng-val').textContent = this.value + '%'" />
+            </div>
+
+            <div>
+              <label style="font-size:0.8rem; color:#cbd5e1; display:flex; justify-content:space-between;">
+                <span>Instructor Cadence (WPM):</span>
+                <span id="slider-wpm-val" style="font-weight:700; color:#38bdf8;">185 WPM</span>
+              </label>
+              <input type="range" id="slider-wpm" min="100" max="220" value="185" style="width:100%;" oninput="document.getElementById('slider-wpm-val').textContent = this.value + ' WPM'" />
+            </div>
+
+            <button class="btn" id="btn-generate-ai-suggestion" style="width:100%; justify-content:center;">
+              Generate Pedagogical Suggestion
+            </button>
+          </div>
+
+          <div id="ai-generated-suggestion-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: Code Executor -->
+    <section id="tab-code" class="tab-content">
+      <div class="glass" style="padding:1.5rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+          <div>
+            <h3 style="font-size:1rem; font-weight:700;">AI Code Generation & Execution Engine</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted);">
+              Generates and executes Python analytical scripts in a sandboxed runtime.
+            </p>
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <select id="select-code-task" style="background:#1e293b; color:#fff; border:1px solid var(--border-color); padding:0.5rem 0.75rem; border-radius:6px; font-size:0.85rem;">
+              <option value="correlation_analysis">Pearson Correlation Analysis</option>
+              <option value="attendance_verification">Sustained Presence Verification</option>
+              <option value="seating_anova">Spatial Seating Variance</option>
+            </select>
+            <button class="btn btn-secondary" id="btn-gen-code">Generate Code</button>
+            <button class="btn btn-success" id="btn-exec-code">Execute Python Sandbox</button>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+          <div>
+            <label style="font-size:0.8rem; color:var(--text-muted); display:block; margin-bottom:0.25rem;">Python Analytics Script (storage/code/):</label>
+            <textarea id="python-code-box" class="code-box" style="width:100%; height:320px; resize:vertical; font-family:monospace;"></textarea>
+          </div>
+
+          <div>
+            <label style="font-size:0.8rem; color:var(--text-muted); display:block; margin-bottom:0.25rem;">Execution Terminal Output (stdout):</label>
+            <div id="python-output-box" class="output-box" style="height:320px; overflow-y:auto;">Click "Execute Python Sandbox" to run script.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Multimodal Attendance & Engagement Agent • Built for Modern AI Classrooms</p>
+    <p style="font-size:0.75rem; color:#64748b; margin-top:0.25rem;">
+      Full-Stack Architecture: Computer Vision • Audio Signal Processing • Google Gemini 2.0 Flash • Text-to-Speech Engine
+    </p>
+  </footer>
+
+  <!-- App Scripts -->
+  <script src="/static/js/scenarios.js"></script>
+  <script src="/static/js/webcam_vision.js"></script>
+  <script src="/static/js/charts.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

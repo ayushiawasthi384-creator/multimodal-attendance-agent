@@ -1,0 +1,284 @@
+{
+  "scenario_1": {
+    "session_id": "SES-SC1-ATTENDANCE",
+    "course_title": "CS401: Advanced Artificial Intelligence & Robotics",
+    "instructor": "Dr. Elena Rostova",
+    "date": "2026-10-30",
+    "duration_minutes": 50,
+    "presence_threshold_seconds": 60,
+    "description": "Validation session testing sustained presence tracking and filtering out transient passers-by.",
+    "participants": [
+      {
+        "student_id": "STU-001",
+        "name": "Aarav Sharma",
+        "roll_no": "CS2026-042",
+        "status": "PRESENT",
+        "first_detected": "09:00:14",
+        "last_detected": "09:49:52",
+        "sustained_duration_sec": 2978,
+        "total_frames_tracked": 1489,
+        "presence_ratio": 0.99,
+        "is_sustained": true,
+        "verification_note": "Sustained presence confirmed (99% active frame retention)"
+      },
+      {
+        "student_id": "STU-002",
+        "name": "Beatriz Silva",
+        "roll_no": "CS2026-015",
+        "status": "PRESENT",
+        "first_detected": "09:01:05",
+        "last_detected": "09:48:30",
+        "sustained_duration_sec": 2845,
+        "total_frames_tracked": 1422,
+        "presence_ratio": 0.96,
+        "is_sustained": true,
+        "verification_note": "Sustained presence confirmed (Entered 1 min late, steady attention)"
+      },
+      {
+        "student_id": "STU-003",
+        "name": "Chen Wei",
+        "roll_no": "CS2026-089",
+        "status": "PRESENT",
+        "first_detected": "09:00:02",
+        "last_detected": "09:50:00",
+        "sustained_duration_sec": 2998,
+        "total_frames_tracked": 1499,
+        "presence_ratio": 1.0,
+        "is_sustained": true,
+        "verification_note": "Sustained presence confirmed (Full session)"
+      },
+      {
+        "student_id": "STU-004",
+        "name": "Daria Petrova",
+        "roll_no": "CS2026-031",
+        "status": "PRESENT",
+        "first_detected": "09:03:20",
+        "last_detected": "09:47:10",
+        "sustained_duration_sec": 2630,
+        "total_frames_tracked": 1315,
+        "presence_ratio": 0.88,
+        "is_sustained": true,
+        "verification_note": "Sustained presence confirmed (Short hall break at min 25)"
+      },
+      {
+        "student_id": "STU-005",
+        "name": "Ethan Davis",
+        "roll_no": "CS2026-064",
+        "status": "ABSENT_TRANSIENT",
+        "first_detected": "09:12:04",
+        "last_detected": "09:12:22",
+        "sustained_duration_sec": 18,
+        "total_frames_tracked": 9,
+        "presence_ratio": 0.006,
+        "is_sustained": false,
+        "verification_note": "Rejected: Transient presence detected (18 sec walk-by, under threshold)"
+      },
+      {
+        "student_id": "STU-006",
+        "name": "Fatima Al-Mansoor",
+        "roll_no": "CS2026-077",
+        "status": "PRESENT",
+        "first_detected": "09:00:10",
+        "last_detected": "09:50:00",
+        "sustained_duration_sec": 2990,
+        "total_frames_tracked": 1495,
+        "presence_ratio": 0.99,
+        "is_sustained": true,
+        "verification_note": "Sustained presence confirmed"
+      },
+      {
+        "student_id": "STU-007",
+        "name": "Gabriel Santos",
+        "roll_no": "CS2026-022",
+        "status": "PRESENT",
+        "first_detected": "09:05:40",
+        "last_detected": "09:49:10",
+        "sustained_duration_sec": 2610,
+        "total_frames_tracked": 1305,
+        "presence_ratio": 0.87,
+        "is_sustained": true,
+        "verification_note": "Sustained presence confirmed"
+      },
+      {
+        "student_id": "STU-008",
+        "name": "Hana Tanaka",
+        "roll_no": "CS2026-053",
+        "status": "ABSENT",
+        "first_detected": null,
+        "last_detected": null,
+        "sustained_duration_sec": 0,
+        "total_frames_tracked": 0,
+        "presence_ratio": 0.0,
+        "is_sustained": false,
+        "verification_note": "No presence recorded"
+      }
+    ]
+  },
+  "scenario_2": {
+    "session_id": "SES-SC2-DYNAMICS",
+    "course_title": "CS401: Multimodal Fusion & Edge Deep Learning",
+    "instructor": "Dr. Elena Rostova",
+    "timeline_minutes": [0, 5, 10, 15, 20, 25, 30, 35, 40, 45],
+    "overall_engagement_score": 76.4,
+    "metrics_timeline": [
+      {
+        "minute": 0,
+        "phase": "Introduction & Setup",
+        "head_pose_attentive_pct": 82,
+        "inactivity_pct": 10,
+        "movement_energy": 0.45,
+        "audio_rms_db": -28.5,
+        "speech_activity_ratio": 0.65,
+        "engagement_index": 79.2,
+        "pedagogical_status": "High Attention"
+      },
+      {
+        "minute": 5,
+        "phase": "Core Theory: Transformer Attention",
+        "head_pose_attentive_pct": 88,
+        "inactivity_pct": 8,
+        "movement_energy": 0.38,
+        "audio_rms_db": -24.0,
+        "speech_activity_ratio": 0.78,
+        "engagement_index": 85.6,
+        "pedagogical_status": "Optimal Absorption"
+      },
+      {
+        "minute": 10,
+        "phase": "Mathematical Proof",
+        "head_pose_attentive_pct": 79,
+        "inactivity_pct": 15,
+        "movement_energy": 0.32,
+        "audio_rms_db": -23.5,
+        "speech_activity_ratio": 0.82,
+        "engagement_index": 78.4,
+        "pedagogical_status": "Moderate Engagement"
+      },
+      {
+        "minute": 15,
+        "phase": "Monologue Fatigue Onset",
+        "head_pose_attentive_pct": 68,
+        "inactivity_pct": 28,
+        "movement_energy": 0.22,
+        "audio_rms_db": -25.1,
+        "speech_activity_ratio": 0.89,
+        "engagement_index": 67.1,
+        "pedagogical_status": "Declining Focus"
+      },
+      {
+        "minute": 20,
+        "phase": "Attention Trough (Monologue Peak)",
+        "head_pose_attentive_pct": 52,
+        "inactivity_pct": 46,
+        "movement_energy": 0.15,
+        "audio_rms_db": -26.0,
+        "speech_activity_ratio": 0.94,
+        "engagement_index": 54.3,
+        "pedagogical_status": "Attention Drop Alert (Intervention Triggered)"
+      },
+      {
+        "minute": 25,
+        "phase": "Interactive Think-Pair-Share Prompt",
+        "head_pose_attentive_pct": 74,
+        "inactivity_pct": 12,
+        "movement_energy": 0.68,
+        "audio_rms_db": -18.2,
+        "speech_activity_ratio": 0.85,
+        "engagement_index": 76.8,
+        "pedagogical_status": "Re-engagement Recovery"
+      },
+      {
+        "minute": 30,
+        "phase": "Active Student Q&A and Demo",
+        "head_pose_attentive_pct": 91,
+        "inactivity_pct": 9,
+        "movement_energy": 0.55,
+        "audio_rms_db": -16.4,
+        "speech_activity_ratio": 0.72,
+        "engagement_index": 92.4,
+        "pedagogical_status": "Peak Interaction"
+      },
+      {
+        "minute": 35,
+        "phase": "Code Walkthrough",
+        "head_pose_attentive_pct": 84,
+        "inactivity_pct": 14,
+        "movement_energy": 0.40,
+        "audio_rms_db": -22.1,
+        "speech_activity_ratio": 0.68,
+        "engagement_index": 82.0,
+        "pedagogical_status": "High Attention"
+      },
+      {
+        "minute": 40,
+        "phase": "Practical Exercise",
+        "head_pose_attentive_pct": 77,
+        "inactivity_pct": 16,
+        "movement_energy": 0.50,
+        "audio_rms_db": -20.5,
+        "speech_activity_ratio": 0.58,
+        "engagement_index": 79.5,
+        "pedagogical_status": "Focused Working"
+      },
+      {
+        "minute": 45,
+        "phase": "Session Wrap-up & Next Steps",
+        "head_pose_attentive_pct": 81,
+        "inactivity_pct": 12,
+        "movement_energy": 0.48,
+        "audio_rms_db": -23.0,
+        "speech_activity_ratio": 0.62,
+        "engagement_index": 80.7,
+        "pedagogical_status": "Stable Conclusion"
+      }
+    ],
+    "spatial_heatmap": {
+      "front_row": {"attendance": 3, "avg_engagement": 88.2, "distraction_rate": 0.05},
+      "middle_row": {"attendance": 3, "avg_engagement": 75.4, "distraction_rate": 0.16},
+      "back_row": {"attendance": 2, "avg_engagement": 61.8, "distraction_rate": 0.32}
+    }
+  },
+  "scenario_3": {
+    "session_id": "SES-SC3-TEACHING-SUGGESTIONS",
+    "course_title": "CS401: Multimodal Attendance & Engagement Agent",
+    "instructor": "Dr. Elena Rostova",
+    "active_interventions": [
+      {
+        "id": "INT-01",
+        "timestamp": "09:20:15",
+        "trigger_condition": "Attention drop below 55% for 3 consecutive minutes with >90% continuous teacher monologue.",
+        "category": "Pacing & Energy",
+        "severity": "HIGH",
+        "suggestion_title": "Inject Interactive Checkpoint / Quick Poll",
+        "suggestion_body": "Attention dropped by 28% in the middle and back rows during the theoretical derivation. Pause your monologue for 60 seconds and launch a live comprehension poll or ask Row 3 to share their intuition.",
+        "tts_alert": "Attention dip detected across back rows. Pause for a 60-second interactive poll.",
+        "instructor_action_taken": "Launched 60-sec Slido quiz",
+        "impact_result": "Engagement surged from 54% to 77% within 4 minutes."
+      },
+      {
+        "id": "INT-02",
+        "timestamp": "09:33:40",
+        "trigger_condition": "Monotone vocal cadence (pitch variance < 12 Hz) and 185 words per minute detected.",
+        "category": "Vocal Dynamics",
+        "severity": "MEDIUM",
+        "suggestion_title": "Vocal Modulation & Cadence Adjustment",
+        "suggestion_body": "Your delivery pace reached 185 words/minute with low vocal inflection. Moderate speech velocity to 140 wpm and use deliberate rhetorical pauses before key takeaway statements.",
+        "tts_alert": "Delivery pace is rapid at 185 words per minute. Ease speed and insert a pause.",
+        "instructor_action_taken": "Slowed speech cadence and emphasized slide takeaways",
+        "impact_result": "Note-taking activity increased by 34%."
+      },
+      {
+        "id": "INT-03",
+        "timestamp": "09:42:10",
+        "trigger_condition": "Spatial attention disparity: Front row (91%) vs Back row (58%).",
+        "category": "Classroom Dynamics",
+        "severity": "LOW",
+        "suggestion_title": "Physical Proximity Rebalancing",
+        "suggestion_body": "There is a noticeable attention gradient between front and back rows. Step away from the lectern and walk down the center aisle towards Row 3 to re-engage peripheral students.",
+        "tts_alert": "Noticeable attention gradient. Move towards the center aisle near Row 3.",
+        "instructor_action_taken": "Lecturer walked down middle aisle",
+        "impact_result": "Back row head pose alignment shifted to 82% attentive."
+      }
+    ]
+  }
+}
